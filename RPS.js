@@ -1,15 +1,27 @@
-let humanscore = 0
-let compscore = 0
-
-function getComputerChoice () {
-    const choice = ["rock", "paper", "scissors"]
-    const randomIndex = Math.floor(Math.random() * choice.length)
-    return choice[randomIndex]
-
+function compchoice () {
+    const validchoices = ["rock", "paper", "scissors"]
+    const randomchoice = Math.floor(Math.random() * validchoices.length)
+    return validchoices[randomchoice]
 }
+console.log (compchoice())
 
-function getHumanChoice () {
+function herochoice () {
+    const validchoices = ["rock", "paper", "scissors"]
+    let validanswer;
+    do {
+        validanswer = prompt("play thoust finest hand").toLowerCase();
+        if (validanswer === null) {
+            return null;
+        }
+
+        if (validanswer !== "rock" && validanswer !== "paper" && validanswer !== "scissors") {
+            alert("THREE damn choices buddy, rock, paper, or scissors");
+        }
+    } while (!validchoices.includes(validanswer));
+    return validanswer;
     
-}
-console.log (getComputerChoice())
+    }
 
+
+console.log (compchoice())
+console.log (herochoice())
