@@ -1,12 +1,15 @@
 let humanscore = 0
 let compscore = 0
-const choice = ["rock, paper, scissors"]
+
 function getComputerChoice () {
-    return Math.floor(Math.random() * max);
+    const choice = ["rock", "paper", "scissors"]
+    const randomIndex = Math.floor(Math.random() * choice.length)
+    return choice[randomIndex]
+
 }
 
-function getRandomArbitrary(min, max) {
-    return Math.random() * (max-min) + min;
+function getHumanChoice () {
     
 }
-console.log (getRandomArbitrary(3, 9))
+console.log (getComputerChoice())
+
