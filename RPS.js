@@ -38,31 +38,50 @@ function playRound (playerChoice, compChoice) {
     };
     let roundWinner;
 
-    if (playerSelection === compSelection) {
+    if (playerChoice == compChoice) {
         roundWinner = 'TIE';
-        console.log (roundWinner);
+        console.log (roundWinner + ' its a tie');
     }
-    if (winCondtions[playerSelection] == compSelection) {
+    else if (winCondtions[playerChoice] == compChoice) {
         playerScore++;
         roundWinner = 'player';
-        console.log (roundWinner)
+        console.log (roundWinner + ' wins')
     }
     else {
         compScore++
         roundWinner = 'comp'
-        console.log (roundWinner);
+        console.log (roundWinner + ' wins');
     }
     return roundWinner;
+
+ 
     
 }
-const playerSelection = getPlayerChoice ()
-const compSelection = getCompChoice ()
 
-playRound(playerSelection, compSelection);
+function playGame() {
+    for (let i = 0; i < 5; i++) { 
+        const playerChoice = getPlayerChoice(); // 2nd re-creation (line 30)- no global var)
+        if (playerChoice === null) { // If player cancels, end the game
+            console.log("Game canceled.");
+            return; // Exit the function early
+        }
 
-function playGame () {
-    playRound ()
+        const compChoice = getCompChoice(); 
+        console.log("Computer chose: " + compChoice); 
+
+        playRound(playerChoice, compChoice); 
+
+        console.log("Player Score: " + playerScore);
+        console.log("Computer Score: " + compScore);
+    }
+
+    if (playerScore > compScore) {
+        console.log("Player wins the game!");
+    } else if (compScore > playerScore) {
+        console.log("Computer wins the game!");
+    } else {
+        console.log("The game is a tie!");
+    }
 }
 
-
-console.log (getCompChoice() + " was my choice")
+playGame ();
